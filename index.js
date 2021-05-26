@@ -138,7 +138,7 @@ app.get('/api', (req, res) => {
             output.success = true;
             output.serial = o.serial;
             output.url = url1;
-
+              res.end(JSON.stringify(output));
             //for localhost
             /*
             request(url1, {
