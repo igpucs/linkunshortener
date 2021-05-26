@@ -161,6 +161,8 @@ app.get('/api', (req, res) => {
 
               }
               else if (json && !json.body.data.length) {
+                //sus we need da bypass
+                console.log(json.body);
                 output.success = false;
                 output.errormsg = "No JSON data"
                 res.end(JSON.stringify(output))
