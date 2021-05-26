@@ -109,7 +109,10 @@ app.get('/api', (req, res) => {
 
       //Request #1
       request(url1, {
-        json: true
+        json: true,
+        headers: {
+          "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Mobile/15E148 Safari/604.1"
+      }
       }, (err, json) => {
         if (err) {
 
@@ -133,7 +136,7 @@ app.get('/api', (req, res) => {
             request(url1, {
 			  method: 'POST',
               json: o,
-              headers: { "content-type": "application/json" }
+              headers: { "content-type": "application/json", "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Mobile/15E148 Safari/604.1" }
             }, (err, json) => {
 
               if (err) {
