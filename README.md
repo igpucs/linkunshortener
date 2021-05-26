@@ -8,3 +8,6 @@ Bypasses major trackers, and ad link shorteners...
 
 For adfly bypasser, see:
 https://github.com/codergautam/adflybypasser
+
+## disclaimer:
+- This project is meant for educational purposes, I do not support bypassing paywalls, skipping ad links and taking profit from these companies.
