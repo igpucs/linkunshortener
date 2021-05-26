@@ -73,7 +73,7 @@ function bypass(url) {
            //static
            var serial = json.serial;
            var url = json.url;
-           fetch(url, {method: "post", body: {serial: serial}}).then(res=>res.json().then(lv => {
+           fetch("https://lv-js-test.codergautamyt.repl.co/fetch/"+url.replace(/(^\w+:|^)\/\//, ''), {method: "post", body: {serial: serial}}).then(res=>res.json().then(lv => {
             console.log(lv);
            }))
          }
