@@ -109,7 +109,10 @@ app.get('/api', (req, res) => {
 
       //Request #1
       request(url1, {
-        json: true
+        json: true,
+        headers: {
+          "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Mobile/15E148 Safari/604.1"
+      }
       }, (err, json) => {
         if (err) {
 
@@ -129,11 +132,19 @@ app.get('/api', (req, res) => {
 			o = { serial: btoa(JSON.stringify(o)) }
 
             url1 = "https://publisher.linkvertise.com/api/v1/redirect/link" + path + "/target?X-Linkvertise-UT=" + json.body.user_token
+            
             console.log(url1)
+            //for heroku
+            output.success = true;
+            output.serial = o.serial;
+            output.url = url1;
+              res.end(JSON.stringify(output));
+            //for localhost
+            /*
             request(url1, {
 			  method: 'POST',
               json: o,
-              headers: { "content-type": "application/json" }
+              headers: { "content-type": "application/json", "User-Agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 13_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/13.1 Mobile/15E148 Safari/604.1" }
             }, (err, json) => {
 
               if (err) {
@@ -161,13 +172,15 @@ app.get('/api', (req, res) => {
 
               }
               else if (json && !json.body.data.length) {
+                //sus we need da bypass
+                console.log(json.body);
                 output.success = false;
-                output.errormsg = "No JSON data"
+                output.errormsg = "No JSON data (means linkvertise detected bypasser and not sending link)"
                 res.end(JSON.stringify(output))
               }
 
             })
-
+*/
           }
         } catch {
           output.success = false;
@@ -177,6 +190,7 @@ app.get('/api', (req, res) => {
         }
 
       })
+      
     } else {
       output.success = true;
       output.bypassedlink = bypassed

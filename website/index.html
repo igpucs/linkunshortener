@@ -64,9 +64,19 @@ function bypass(url) {
     var api = "/api?url="
     fetch(api+url).then(r=>r.json().then(json => {
        if(json.success) {
+         if(json.hasOwnProperty("bypassedlink")) {
+           //probably dynamic
         document.getElementById("h").innerHTML = "Bypassed "+json.type+"!";
            document.getElementById("ad").href = json.bypassedlink
           document.getElementById("ad").innerHTML = json.bypassedlink
+         } else {
+           //static
+           var serial = json.serial;
+           var url = json.url;
+           fetch("https://lv-js-test.codergautamyt.repl.co/fetch/"+url.replace(/(^\w+:|^)\/\//, ''), {method: "post", body: {serial: serial}}).then(res=>res.json().then(lv => {
+            console.log(lv);
+           }))
+         }
        } else {
            document.getElementById("h").innerHTML = "Error"
            document.getElementById("ad").href = "#"
