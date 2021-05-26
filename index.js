@@ -58,6 +58,7 @@ app.get('/api', (req, res) => {
     output.success = false;
     output.errormsg = "Invalid URL"
     res.end(JSON.stringify(output))
+    return;
   }
 
   if (testregex(url11, "/linkvertise\.(com|net)|link-to\.net|up-to-down\.net|direct-link\.net|filemedia\.net|linkvertise\.download|file-link\.net/")) {
@@ -72,6 +73,7 @@ app.get('/api', (req, res) => {
       output.errormsg = "Not a valid URL"
 
       res.end(JSON.stringify(output))
+      return;
     }
     if (urltestobj.host != "linkvertise.download") {
       url = url11;
