@@ -7,6 +7,6 @@ application:
 routers:
 - name: "main-api"
   routes:
-  - application_name: "api"
+  - application_name: "linkunshortener"
     paths:
     - "/*"
