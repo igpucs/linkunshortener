@@ -132,7 +132,15 @@ app.get('/api', (req, res) => {
 			o = { serial: btoa(JSON.stringify(o)) }
 
             url1 = "https://publisher.linkvertise.com/api/v1/redirect/link" + path + "/target?X-Linkvertise-UT=" + json.body.user_token
+            
             console.log(url1)
+            //for heroku
+            output.success = true;
+            output.serial = o.serial;
+            output.url = url1;
+
+            //for localhost
+            /*
             request(url1, {
 			  method: 'POST',
               json: o,
@@ -167,12 +175,12 @@ app.get('/api', (req, res) => {
                 //sus we need da bypass
                 console.log(json.body);
                 output.success = false;
-                output.errormsg = "No JSON data"
+                output.errormsg = "No JSON data (means linkvertise detected bypasser and not sending link)"
                 res.end(JSON.stringify(output))
               }
 
             })
-
+*/
           }
         } catch {
           output.success = false;
@@ -182,6 +190,7 @@ app.get('/api', (req, res) => {
         }
 
       })
+      
     } else {
       output.success = true;
       output.bypassedlink = bypassed
