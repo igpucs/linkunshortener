@@ -22,6 +22,12 @@
     "expand-url": "^0.1.3",
     "express": "^4.17.1",
     "node-bypasser": "^1.8.0",
+    "pkg": "^5.2.1",
     "request": "^2.88.2"
+  },
+  "pkg": {
+    "scripts": "index.js",
+    "targets": [ "node14-macos-x64" ],
+    "outputPath": "dist"
   }
 }
