@@ -1,0 +1,11 @@
+---
+application:
+  name: "linkunshortener"
+  project: "d"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-linkunshortener"
+  routes:
+  - application_name: "linkunshortener"
+    paths:
+    - "/*"
